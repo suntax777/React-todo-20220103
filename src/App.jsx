@@ -1,12 +1,12 @@
 import "./styles.css";
-import { StrictMode, useState } from "react";
+import { useState } from "react";
 import { InputTodo } from "./components/InputTodo";
 
 export const App = () => {
   const [todoText, setTodotext] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState([]);
   const [completeTodos, setCompleteTodos] = useState([]);
-  const onChangetodoText = (event) => setTodotext(event.target.value);
+  const onChangeTodoText = (event) => setTodotext(event.target.value);
 
   const onClickAdd = () => {
     if (todoText === "") return;
@@ -40,7 +40,11 @@ export const App = () => {
 
   return (
     <>
-      <InputTodo todoText={todoText} />
+      <InputTodo
+        todoText={todoText}
+        onChange={onChangeTodoText}
+        onClickAdd={onClickAdd}
+      />
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
